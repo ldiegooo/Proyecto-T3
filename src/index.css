@@ -1,0 +1,146 @@
+:root {
+  --fondo: #111827;
+  --superficie: #1f2937;
+  --texto: #f3f4f6;
+  --texto-suave: #9ca3af;
+  --acento: #facc15;
+  --radio: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.logo {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+/* Búsqueda */
+.search {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: var(--radio);
+  background: var(--superficie);
+  color: var(--texto);
+  font-size: 1rem;
+}
+.search::placeholder {
+  color: var(--texto-suave);
+}
+.search:focus {
+  outline: 2px solid var(--acento);
+}
+
+/* Filtros */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 0 20px;
+}
+.chips {
+  display: flex;
+  gap: 8px;
+}
+.chip {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 999px;
+  background: var(--superficie);
+  color: var(--texto);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.chip--activo {
+  background: var(--acento);
+  color: #111827;
+  font-weight: 600;
+}
+.select {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--superficie);
+  color: var(--texto);
+  font-size: 0.85rem;
+}
+
+/* Cuadrícula adaptable: 2 columnas en móvil, más en pantallas grandes */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.vacio {
+  text-align: center;
+  color: var(--texto-suave);
+  margin-top: 48px;
+}
+
+/* Tarjeta */
+.card {
+  cursor: pointer;
+}
+.card__poster {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  aspect-ratio: 2 / 3;
+  padding: 12px;
+  border-radius: var(--radio);
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.15s;
+}
+.card:hover .card__poster {
+  transform: translateY(-4px);
+}
+.card__poster-titulo {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+.card__tipo {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  font-size: 0.7rem;
+}
+.card__titulo {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+}
+.card__genero {
+  margin: 2px 0 0;
+  font-size: 0.75rem;
+  color: var(--texto-suave);
+}
