@@ -1,13 +1,8 @@
 import { useEffect } from "react";
+import Poster from "./Poster";
 
 // Ventana modal con la información completa de un título.
 export default function MovieDetail({ item, esFavorito, onFavorito, onCerrar }) {
-  const [c1, c2] = item.color;
-
-  const estiloPoster = item.poster
-    ? { backgroundImage: `url(${item.poster})` }
-    : { backgroundImage: `linear-gradient(160deg, ${c1}, ${c2})` };
-
   // Efecto: cerrar con la tecla Escape y bloquear el scroll del fondo.
   useEffect(() => {
     const alPresionar = (e) => {
@@ -40,11 +35,7 @@ export default function MovieDetail({ item, esFavorito, onFavorito, onCerrar }) 
           ✕
         </button>
 
-        <div className="modal__poster" style={estiloPoster}>
-          {!item.poster && (
-            <span className="card__poster-titulo">{item.titulo}</span>
-          )}
-        </div>
+        <Poster item={item} className="modal__poster" />
 
         <div className="modal__info">
           <h2 className="modal__titulo">{item.titulo}</h2>

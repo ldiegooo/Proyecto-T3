@@ -299,3 +299,24 @@ body {
     align-self: center;
   }
 }
+
+/* Imágenes de póster */
+.card__poster,
+.modal__poster {
+  position: relative;
+  overflow: hidden;
+}
+.poster__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.chips {
+  flex-wrap: wrap;
+}
+.chip--fav.chip--activo {
+  background: #f43f5e;
+  color: #fff;
+}

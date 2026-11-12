@@ -4,7 +4,14 @@ const TIPOS = [
   { valor: "serie", etiqueta: "Series" },
 ];
 
-export default function FilterBar({ tipo, onTipo, genero, onGenero, generos }) {
+export default function FilterBar({
+  tipo,
+  onTipo,
+  genero,
+  onGenero,
+  generos,
+  totalFavoritos,
+}) {
   return (
     <div className="filters">
       <div className="chips">
@@ -17,6 +24,12 @@ export default function FilterBar({ tipo, onTipo, genero, onGenero, generos }) {
             {t.etiqueta}
           </button>
         ))}
+        <button
+          className={`chip chip--fav ${tipo === "favoritos" ? "chip--activo" : ""}`}
+          onClick={() => onTipo("favoritos")}
+        >
+          ♥ Favoritos ({totalFavoritos})
+        </button>
       </div>
 
       <select

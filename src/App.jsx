@@ -21,9 +21,8 @@ function cargarFavoritos() {
 export default function App() {
   // Estado de la aplicación: vive en App y se pasa a los hijos por props.
   const [busqueda, setBusqueda] = useState("");
-  const [tipo, setTipo] = useState("todos"); // "todos" | "pelicula" | "serie"
+  const [tipo, setTipo] = useState("todos"); // "todos" | "pelicula" | "serie" | "favoritos"
   const [genero, setGenero] = useState("todos");
-  const [vista, setVista] = useState("catalogo"); // "catalogo" | "favoritos"
   const [seleccionado, setSeleccionado] = useState(null); // item abierto en el detalle
   const [favoritos, setFavoritos] = useState(cargarFavoritos); // arreglo de ids
 
@@ -46,55 +45,44 @@ export default function App() {
   };
 
   // Valores derivados: no se guardan en el estado, se calculan en cada render.
+  const enFavoritos = tipo === "favoritos";
+
   const resultados = catalogo.filter((item) => {
     const coincideTitulo = item.titulo
       .toLowerCase()
       .includes(busqueda.trim().toLowerCase());
-    const coincideTipo = tipo === "todos" || item.tipo === tipo;
+    const coincideTipo =
+      tipo === "todos" ||
+      (enFavoritos ? favoritos.includes(item.id) : item.tipo === tipo);
     const coincideGenero = genero === "todos" || item.genero === genero;
     return coincideTitulo && coincideTipo && coincideGenero;
   });
-  const listaFavoritos = catalogo.filter((item) => favoritos.includes(item.id));
 
-  const enFavoritos = vista === "favoritos";
+  const mensajeVacio =
+    enFavoritos && favoritos.length === 0
+      ? "Aún no tienes favoritos. Toca el corazón de una tarjeta para agregarla."
+      : "No se encontraron resultados.";
 
   return (
     <div className="app">
-      <Header
-        vista={vista}
-        onVista={setVista}
+      <Header />
+
+      <SearchBar valor={busqueda} onCambio={setBusqueda} />
+      <FilterBar
+        tipo={tipo}
+        onTipo={setTipo}
+        genero={genero}
+        onGenero={setGenero}
+        generos={generos}
         totalFavoritos={favoritos.length}
       />
-
-      {enFavoritos ? (
-        <>
-          <h2 className="seccion-titulo">Mis favoritos</h2>
-          <MovieGrid
-            items={listaFavoritos}
-            favoritos={favoritos}
-            onFavorito={alternarFavorito}
-            onSeleccionar={setSeleccionado}
-            mensajeVacio="Aún no tienes favoritos. Toca el corazón de una tarjeta para agregarla."
-          />
-        </>
-      ) : (
-        <>
-          <SearchBar valor={busqueda} onCambio={setBusqueda} />
-          <FilterBar
-            tipo={tipo}
-            onTipo={setTipo}
-            genero={genero}
-            onGenero={setGenero}
-            generos={generos}
-          />
-          <MovieGrid
-            items={resultados}
-            favoritos={favoritos}
-            onFavorito={alternarFavorito}
-            onSeleccionar={setSeleccionado}
-          />
-        </>
-      )}
+      <MovieGrid
+        items={resultados}
+        favoritos={favoritos}
+        onFavorito={alternarFavorito}
+        onSeleccionar={setSeleccionado}
+        mensajeVacio={mensajeVacio}
+      />
 
       {seleccionado && (
         <MovieDetail
