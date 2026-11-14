@@ -47,13 +47,14 @@ body {
 }
 .logo {
   margin: 0;
-  font-size: 1.6rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  background: linear-gradient(90deg, var(--texto) 0%, var(--acento-2) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  line-height: 0;
+}
+.logo__img {
+  display: block;
+  height: 96px;
+  width: auto;
+  /* brillo suave: el contorno oscuro del logo no se pierde sobre el fondo azul noche */
+  filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.35));
 }
 
 /* Búsqueda */
@@ -448,6 +449,9 @@ body {
   .header {
     flex-wrap: wrap;
     gap: 8px;
+  }
+  .logo__img {
+    height: 76px;
   }
   .grid {
     gap: 12px;
