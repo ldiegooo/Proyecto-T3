@@ -1,25 +1,25 @@
 Pósters de PonyCine
 ===================
-Coloca aqui las imagenes con EXACTAMENTE estos nombres (formato vertical 2:3, por ejemplo 500x750 px, .jpg).
-Si falta alguna, esa tarjeta muestra un degradado con el titulo, asi que puedes ir agregandolas poco a poco.
+Cada archivo es de 500x750 px (proporción 2:3). Los nombres deben coincidir con el campo "poster" de src/data/catalogo.js.
+Si falta una imagen, esa tarjeta muestra un degradado con el título.
 
-interstellar.jpg                                 <- Interstellar
-coco.jpg                                         <- Coco
-stranger-things.jpg                              <- Stranger Things
-el-origen.jpg                                    <- El origen
-breaking-bad.jpg                                 <- Breaking Bad
-toy-story.jpg                                    <- Toy Story
-parasitos.jpg                                    <- Parásitos
-the-office.jpg                                   <- The Office
-mad-max-furia-en-el-camino.jpg                   <- Mad Max: Furia en el camino
-dark.jpg                                         <- Dark
-spider-man-un-nuevo-universo.jpg                 <- Spider-Man: Un nuevo universo
-juego-de-tronos.jpg                              <- Juego de tronos
-el-laberinto-del-fauno.jpg                       <- El laberinto del fauno
-black-mirror.jpg                                 <- Black Mirror
-gladiador.jpg                                    <- Gladiador
-friends.jpg                                      <- Friends
-intensamente.jpg                                 <- Intensamente
-chernobyl.jpg                                    <- Chernobyl
-gravedad.jpg                                     <- Gravedad
-avatar-la-leyenda-de-aang.jpg                    <- Avatar: La leyenda de Aang
+interstellar.jpeg                  <- Interstellar
+coco.jpeg                          <- Coco
+stranger_things.jpeg               <- Stranger Things
+breaking_bad.jpeg                  <- Breaking Bad
+toy_story.jpeg                     <- Toy Story
+the_office.jpeg                    <- The Office
+dark.jpeg                          <- Dark
+spiderman.jpeg                     <- The Amazing Spider-Man
+got.jpeg                           <- Juego de tronos
+el_laberinto_del_fauno.jpeg        <- El laberinto del fauno
+black_mirror.jpeg                  <- Black Mirror
+gladiador.jpeg                     <- Gladiador
+chernobyl.jpeg                     <- Chernobyl
+shrek.jpeg                         <- Shrek
+up.jpeg                            <- Up
+walle.jpeg                         <- WALL·E
+dumbo.jpeg                         <- Dumbo
+son_como_ninos.jpeg                <- Son como niños
+malcom_in_the_middle.jpeg          <- Malcolm el de en medio
+welcome_to_derry.jpeg              <- IT: Bienvenidos a Derry

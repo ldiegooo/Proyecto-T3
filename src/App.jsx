@@ -53,6 +53,9 @@ export default function App() {
   // Valores derivados: no se guardan en el estado, se calculan en cada render.
   const enFavoritos = tipo === "favoritos";
 
+  // Cuenta solo favoritos que aún existen en el catálogo (por si un título se quitó).
+  const totalFavoritos = catalogo.filter((item) => favoritos.includes(item.id)).length;
+
   const resultados = catalogo.filter((item) => {
     const coincideTitulo = item.titulo
       .toLowerCase()
@@ -74,7 +77,7 @@ export default function App() {
     destacado && busqueda.trim() === "" && tipo === "todos" && genero === "todos";
 
   const mensajeVacio =
-    enFavoritos && favoritos.length === 0
+    enFavoritos && totalFavoritos === 0
       ? "Aún no tienes favoritos. Toca el corazón de una tarjeta para agregarla."
       : "No se encontraron resultados.";
 
@@ -91,7 +94,7 @@ export default function App() {
         generos={generos}
         orden={orden}
         onOrden={setOrden}
-        totalFavoritos={favoritos.length}
+        totalFavoritos={totalFavoritos}
       />
 
       {mostrarDestacado && (

@@ -3,7 +3,8 @@ import Poster from "./Poster";
 export default function MovieCard({ item, esFavorito, onFavorito, onSeleccionar }) {
   return (
     <article className="card">
-      {/* Botón de favorito: va fuera del botón del póster para no anidar botones. */}
+      {/* Botón de favorito: va fuera del botón del póster para no anidar botones.
+          Se coloca abajo a la derecha (junto al texto) para no tapar el póster. */}
       <button
         className={`card__fav ${esFavorito ? "card__fav--activo" : ""}`}
         onClick={() => onFavorito(item.id)}
@@ -22,13 +23,12 @@ export default function MovieCard({ item, esFavorito, onFavorito, onSeleccionar 
         onClick={() => onSeleccionar(item)}
         aria-label={`Ver detalle de ${item.titulo}`}
       >
-        <Poster item={item} className="card__poster">
-          <span className="card__tipo">
-            {item.tipo === "pelicula" ? "Película" : "Serie"}
-          </span>
-        </Poster>
+        {/* Sin etiquetas encima: los pósters reales ya traen su título. */}
+        <Poster item={item} className="card__poster" />
         <h2 className="card__titulo">{item.titulo}</h2>
-        <p className="card__genero">{item.genero}</p>
+        <p className="card__genero">
+          {item.tipo === "pelicula" ? "Película" : "Serie"} · {item.genero}
+        </p>
       </button>
     </article>
   );

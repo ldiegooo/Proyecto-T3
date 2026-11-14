@@ -1,9 +1,10 @@
 // Catálogo local: arreglo de objetos (no hay backend ni API).
 // "tipo" puede ser "pelicula" o "serie".
 // "duracion" aplica a películas; "temporadas" aplica a series.
-// "poster" es la ruta de la imagen dentro de public/ (ej. public/posters/interstellar.jpg).
+// "poster" es la ruta de la imagen dentro de public/ (ej. public/posters/interstellar.jpeg).
 // Si el archivo no existe, la tarjeta muestra un degradado con el título usando "color".
 // "destacado: true" marca el título que aparece grande arriba (solo uno).
+// Los "id" no se repiten ni se reutilizan: los favoritos guardados se identifican por id.
 
 export const catalogo = [
   {
@@ -16,7 +17,7 @@ export const catalogo = [
     sinopsis:
       "Un grupo de astronautas viaja a través de un agujero de gusano en busca de un nuevo hogar para la humanidad.",
     destacado: true, // aparece grande arriba, en "Destacado"
-    poster: "posters/interstellar.jpg",
+    poster: "posters/interstellar.jpeg",
     color: ["#1e3a8a", "#60a5fa"],
   },
   {
@@ -28,7 +29,7 @@ export const catalogo = [
     duracion: "105 min",
     sinopsis:
       "Un niño que sueña con ser músico llega a la Tierra de los Muertos para descubrir la historia de su familia.",
-    poster: "posters/coco.jpg",
+    poster: "posters/coco.jpeg",
     color: ["#312e81", "#818cf8"],
   },
   {
@@ -40,20 +41,8 @@ export const catalogo = [
     temporadas: 5,
     sinopsis:
       "Un grupo de amigos enfrenta fuerzas sobrenaturales y experimentos secretos en un pequeño pueblo de los años 80.",
-    poster: "posters/stranger-things.jpg",
+    poster: "posters/stranger_things.jpeg",
     color: ["#0f172a", "#3b82f6"],
-  },
-  {
-    id: 4,
-    titulo: "El origen",
-    tipo: "pelicula",
-    genero: "Ciencia ficción",
-    anio: 2010,
-    duracion: "148 min",
-    sinopsis:
-      "Un ladrón especializado en robar secretos a través de los sueños recibe la misión de plantar una idea en la mente de alguien.",
-    poster: "posters/el-origen.jpg",
-    color: ["#164e63", "#22d3ee"],
   },
   {
     id: 5,
@@ -64,7 +53,7 @@ export const catalogo = [
     temporadas: 5,
     sinopsis:
       "Un profesor de química con una enfermedad grave se adentra en el mundo del narcotráfico para asegurar el futuro de su familia.",
-    poster: "posters/breaking-bad.jpg",
+    poster: "posters/breaking_bad.jpeg",
     color: ["#1e3a8a", "#38bdf8"],
   },
   {
@@ -76,20 +65,8 @@ export const catalogo = [
     duracion: "81 min",
     sinopsis:
       "Los juguetes de un niño cobran vida cuando nadie los ve, y una rivalidad entre dos de ellos desencadena una gran aventura.",
-    poster: "posters/toy-story.jpg",
+    poster: "posters/toy_story.jpeg",
     color: ["#0369a1", "#7dd3fc"],
-  },
-  {
-    id: 7,
-    titulo: "Parásitos",
-    tipo: "pelicula",
-    genero: "Drama",
-    anio: 2019,
-    duracion: "132 min",
-    sinopsis:
-      "Una familia sin recursos se infiltra poco a poco en la vida de una familia adinerada, con consecuencias inesperadas.",
-    poster: "posters/parasitos.jpg",
-    color: ["#1e293b", "#60a5fa"],
   },
   {
     id: 8,
@@ -100,20 +77,8 @@ export const catalogo = [
     temporadas: 9,
     sinopsis:
       "Un falso documental sobre el día a día de los empleados de una oficina de ventas de papel.",
-    poster: "posters/the-office.jpg",
+    poster: "posters/the_office.jpeg",
     color: ["#1d4ed8", "#93c5fd"],
-  },
-  {
-    id: 9,
-    titulo: "Mad Max: Furia en el camino",
-    tipo: "pelicula",
-    genero: "Acción",
-    anio: 2015,
-    duracion: "120 min",
-    sinopsis:
-      "En un desierto postapocalíptico, una guerrera y un vagabundo huyen de un tirano a bordo de un camión blindado.",
-    poster: "posters/mad-max-furia-en-el-camino.jpg",
-    color: ["#172554", "#3b82f6"],
   },
   {
     id: 10,
@@ -124,19 +89,19 @@ export const catalogo = [
     temporadas: 3,
     sinopsis:
       "La desaparición de un niño en un pueblo alemán revela secretos que conectan a varias generaciones a través del tiempo.",
-    poster: "posters/dark.jpg",
+    poster: "posters/dark.jpeg",
     color: ["#0f172a", "#6366f1"],
   },
   {
     id: 11,
-    titulo: "Spider-Man: Un nuevo universo",
+    titulo: "The Amazing Spider-Man",
     tipo: "pelicula",
-    genero: "Animación",
-    anio: 2018,
-    duracion: "117 min",
+    genero: "Acción",
+    anio: 2012,
+    duracion: "136 min",
     sinopsis:
-      "Un joven de Brooklyn descubre que no es el único con poderes de araña cuando aparecen versiones de otras dimensiones.",
-    poster: "posters/spider-man-un-nuevo-universo.jpg",
+      "Peter Parker, un adolescente que obtiene poderes tras la picadura de una araña, investiga el pasado de sus padres y se enfrenta al Lagarto.",
+    poster: "posters/spiderman.jpeg",
     color: ["#3730a3", "#60a5fa"],
   },
   {
@@ -148,7 +113,7 @@ export const catalogo = [
     temporadas: 8,
     sinopsis:
       "Varias familias nobles se disputan el control del trono de hierro mientras una amenaza antigua despierta en el norte.",
-    poster: "posters/juego-de-tronos.jpg",
+    poster: "posters/got.jpeg",
     color: ["#1e293b", "#3b82f6"],
   },
   {
@@ -160,7 +125,7 @@ export const catalogo = [
     duracion: "118 min",
     sinopsis:
       "En la España de la posguerra, una niña descubre un mundo mágico y debe superar tres pruebas.",
-    poster: "posters/el-laberinto-del-fauno.jpg",
+    poster: "posters/el_laberinto_del_fauno.jpeg",
     color: ["#134e4a", "#38bdf8"],
   },
   {
@@ -172,7 +137,7 @@ export const catalogo = [
     temporadas: 6,
     sinopsis:
       "Historias independientes que exploran el lado oscuro de la tecnología y su efecto en la sociedad.",
-    poster: "posters/black-mirror.jpg",
+    poster: "posters/black_mirror.jpeg",
     color: ["#0f172a", "#64748b"],
   },
   {
@@ -184,32 +149,8 @@ export const catalogo = [
     duracion: "155 min",
     sinopsis:
       "Un general romano traicionado se convierte en gladiador y busca vengarse del emperador que destruyó a su familia.",
-    poster: "posters/gladiador.jpg",
+    poster: "posters/gladiador.jpeg",
     color: ["#1e40af", "#93c5fd"],
-  },
-  {
-    id: 16,
-    titulo: "Friends",
-    tipo: "serie",
-    genero: "Comedia",
-    anio: 1994,
-    temporadas: 10,
-    sinopsis:
-      "Seis amigos viven juntos las alegrías y los tropiezos de la vida adulta en Nueva York.",
-    poster: "posters/friends.jpg",
-    color: ["#4338ca", "#a5b4fc"],
-  },
-  {
-    id: 17,
-    titulo: "Intensamente",
-    tipo: "pelicula",
-    genero: "Animación",
-    anio: 2015,
-    duracion: "95 min",
-    sinopsis:
-      "Las emociones dentro de la mente de una niña intentan guiarla cuando su familia se muda a otra ciudad.",
-    poster: "posters/intensamente.jpg",
-    color: ["#0284c7", "#bae6fd"],
   },
   {
     id: 18,
@@ -220,32 +161,92 @@ export const catalogo = [
     temporadas: 1,
     sinopsis:
       "Recrea el desastre nuclear de 1986 y los esfuerzos de quienes intentaron contener sus consecuencias.",
-    poster: "posters/chernobyl.jpg",
+    poster: "posters/chernobyl.jpeg",
     color: ["#0c4a6e", "#38bdf8"],
   },
   {
-    id: 19,
-    titulo: "Gravedad",
+    id: 21,
+    titulo: "Shrek",
     tipo: "pelicula",
-    genero: "Ciencia ficción",
-    anio: 2013,
-    duracion: "91 min",
+    genero: "Animación",
+    anio: 2001,
+    duracion: "90 min",
     sinopsis:
-      "Dos astronautas quedan a la deriva en el espacio tras un accidente y luchan por regresar a la Tierra.",
-    poster: "posters/gravedad.jpg",
-    color: ["#1e1b4b", "#60a5fa"],
+      "Un ogro gruñón que solo quiere vivir tranquilo en su pantano debe rescatar a una princesa para recuperar su hogar, acompañado por un burro parlanchín.",
+    poster: "posters/shrek.jpeg",
+    color: ["#14532d", "#60a5fa"],
   },
   {
-    id: 20,
-    titulo: "Avatar: La leyenda de Aang",
-    tipo: "serie",
+    id: 22,
+    titulo: "Up",
+    tipo: "pelicula",
     genero: "Animación",
-    anio: 2005,
-    temporadas: 3,
+    anio: 2009,
+    duracion: "96 min",
     sinopsis:
-      "Un joven con el poder de dominar los cuatro elementos debe detener a una nación que busca conquistar el mundo.",
-    poster: "posters/avatar-la-leyenda-de-aang.jpg",
-    color: ["#075985", "#2dd4bf"],
+      "Un viudo de edad avanzada ata miles de globos a su casa y emprende el viaje de sus sueños a Sudamérica, sin saber que un niño explorador viaja con él.",
+    poster: "posters/up.jpeg",
+    color: ["#0369a1", "#7dd3fc"],
+  },
+  {
+    id: 23,
+    titulo: "WALL·E",
+    tipo: "pelicula",
+    genero: "Animación",
+    anio: 2008,
+    duracion: "98 min",
+    sinopsis:
+      "Un pequeño robot que limpia una Tierra abandonada se enamora de una sonda y la sigue por el espacio, en una aventura que puede cambiar el destino de la humanidad.",
+    poster: "posters/walle.jpeg",
+    color: ["#1e3a8a", "#38bdf8"],
+  },
+  {
+    id: 24,
+    titulo: "Dumbo",
+    tipo: "pelicula",
+    genero: "Animación",
+    anio: 1941,
+    duracion: "64 min",
+    sinopsis:
+      "Un pequeño elefante del circo, burlado por sus enormes orejas, descubre con ayuda de un ratón que esas orejas le permiten volar.",
+    poster: "posters/dumbo.jpeg",
+    color: ["#4338ca", "#a5b4fc"],
+  },
+  {
+    id: 25,
+    titulo: "Son como niños",
+    tipo: "pelicula",
+    genero: "Comedia",
+    anio: 2010,
+    duracion: "102 min",
+    sinopsis:
+      "Cinco amigos que fueron compañeros de basquetbol en la infancia se reencuentran con sus familias para pasar un fin de semana en un lago tras la muerte de su antiguo entrenador.",
+    poster: "posters/son_como_ninos.jpeg",
+    color: ["#0284c7", "#bae6fd"],
+  },
+  {
+    id: 26,
+    titulo: "Malcolm el de en medio",
+    tipo: "serie",
+    genero: "Comedia",
+    anio: 2000,
+    temporadas: 7,
+    sinopsis:
+      "Malcolm, un niño genio, intenta sobrevivir al caos de su familia disfuncional, con tres hermanos más y unos padres siempre desbordados.",
+    poster: "posters/malcom_in_the_middle.jpeg",
+    color: ["#1d4ed8", "#93c5fd"],
+  },
+  {
+    id: 27,
+    titulo: "IT: Bienvenidos a Derry",
+    tipo: "serie",
+    genero: "Terror",
+    anio: 2025,
+    temporadas: 1,
+    sinopsis:
+      "Precuela de la película «It», ambientada en 1962: la desaparición de un niño en el pueblo de Derry, Maine, despierta un mal antiguo que acecha a sus habitantes.",
+    poster: "posters/welcome_to_derry.jpeg",
+    color: ["#0f172a", "#3b82f6"],
   },
 ];
 
