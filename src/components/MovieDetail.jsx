@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Poster from "./Poster";
+import { textoDuracion } from "../utils/formato";
 
 // Ventana modal con la información completa de un título.
 export default function MovieDetail({ item, esFavorito, onFavorito, onCerrar }) {
@@ -17,9 +18,7 @@ export default function MovieDetail({ item, esFavorito, onFavorito, onCerrar }) 
   }, [onCerrar]);
 
   const esPelicula = item.tipo === "pelicula";
-  const dato = esPelicula
-    ? item.duracion
-    : `${item.temporadas} ${item.temporadas === 1 ? "temporada" : "temporadas"}`;
+  const dato = textoDuracion(item);
 
   return (
     // Clic en el fondo oscuro cierra; clic dentro del cuadro no (stopPropagation).

@@ -1,3 +1,5 @@
+import { ORDENES } from "../utils/orden";
+
 const TIPOS = [
   { valor: "todos", etiqueta: "Todas" },
   { valor: "pelicula", etiqueta: "Películas" },
@@ -10,6 +12,8 @@ export default function FilterBar({
   genero,
   onGenero,
   generos,
+  orden,
+  onOrden,
   totalFavoritos,
 }) {
   return (
@@ -32,19 +36,34 @@ export default function FilterBar({
         </button>
       </div>
 
-      <select
-        className="select"
-        aria-label="Filtrar por género"
-        value={genero}
-        onChange={(e) => onGenero(e.target.value)}
-      >
-        <option value="todos">Todos los géneros</option>
-        {generos.map((g) => (
-          <option key={g} value={g}>
-            {g}
-          </option>
-        ))}
-      </select>
+      <div className="selects">
+        <select
+          className="select"
+          aria-label="Filtrar por género"
+          value={genero}
+          onChange={(e) => onGenero(e.target.value)}
+        >
+          <option value="todos">Todos los géneros</option>
+          {generos.map((g) => (
+            <option key={g} value={g}>
+              {g}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className="select"
+          aria-label="Ordenar por"
+          value={orden}
+          onChange={(e) => onOrden(e.target.value)}
+        >
+          {ORDENES.map((o) => (
+            <option key={o.valor} value={o.valor}>
+              {o.etiqueta}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 }

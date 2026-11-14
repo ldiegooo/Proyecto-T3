@@ -1,0 +1,25 @@
+Pósters de PonyCine
+===================
+Coloca aqui las imagenes con EXACTAMENTE estos nombres (formato vertical 2:3, por ejemplo 500x750 px, .jpg).
+Si falta alguna, esa tarjeta muestra un degradado con el titulo, asi que puedes ir agregandolas poco a poco.
+
+interstellar.jpg                                 <- Interstellar
+coco.jpg                                         <- Coco
+stranger-things.jpg                              <- Stranger Things
+el-origen.jpg                                    <- El origen
+breaking-bad.jpg                                 <- Breaking Bad
+toy-story.jpg                                    <- Toy Story
+parasitos.jpg                                    <- Parásitos
+the-office.jpg                                   <- The Office
+mad-max-furia-en-el-camino.jpg                   <- Mad Max: Furia en el camino
+dark.jpg                                         <- Dark
+spider-man-un-nuevo-universo.jpg                 <- Spider-Man: Un nuevo universo
+juego-de-tronos.jpg                              <- Juego de tronos
+el-laberinto-del-fauno.jpg                       <- El laberinto del fauno
+black-mirror.jpg                                 <- Black Mirror
+gladiador.jpg                                    <- Gladiador
+friends.jpg                                      <- Friends
+intensamente.jpg                                 <- Intensamente
+chernobyl.jpg                                    <- Chernobyl
+gravedad.jpg                                     <- Gravedad
+avatar-la-leyenda-de-aang.jpg                    <- Avatar: La leyenda de Aang

@@ -1,8 +1,9 @@
 // Catálogo local: arreglo de objetos (no hay backend ni API).
 // "tipo" puede ser "pelicula" o "serie".
 // "duracion" aplica a películas; "temporadas" aplica a series.
-// "color" se usa para generar el póster (degradado) mientras no haya imágenes reales.
-// Para usar imágenes reales, agrega un campo "poster" con la ruta (ej. "/posters/interstellar.jpg").
+// "poster" es la ruta de la imagen dentro de public/ (ej. public/posters/interstellar.jpg).
+// Si el archivo no existe, la tarjeta muestra un degradado con el título usando "color".
+// "destacado: true" marca el título que aparece grande arriba (solo uno).
 
 export const catalogo = [
   {
@@ -14,7 +15,9 @@ export const catalogo = [
     duracion: "169 min",
     sinopsis:
       "Un grupo de astronautas viaja a través de un agujero de gusano en busca de un nuevo hogar para la humanidad.",
-    color: ["#1e3a8a", "#be185d"],
+    destacado: true, // aparece grande arriba, en "Destacado"
+    poster: "posters/interstellar.jpg",
+    color: ["#1e3a8a", "#60a5fa"],
   },
   {
     id: 2,
@@ -25,7 +28,8 @@ export const catalogo = [
     duracion: "105 min",
     sinopsis:
       "Un niño que sueña con ser músico llega a la Tierra de los Muertos para descubrir la historia de su familia.",
-    color: ["#7c3aed", "#f97316"],
+    poster: "posters/coco.jpg",
+    color: ["#312e81", "#818cf8"],
   },
   {
     id: 3,
@@ -36,7 +40,8 @@ export const catalogo = [
     temporadas: 5,
     sinopsis:
       "Un grupo de amigos enfrenta fuerzas sobrenaturales y experimentos secretos en un pequeño pueblo de los años 80.",
-    color: ["#7f1d1d", "#0f172a"],
+    poster: "posters/stranger-things.jpg",
+    color: ["#0f172a", "#3b82f6"],
   },
   {
     id: 4,
@@ -47,7 +52,8 @@ export const catalogo = [
     duracion: "148 min",
     sinopsis:
       "Un ladrón especializado en robar secretos a través de los sueños recibe la misión de plantar una idea en la mente de alguien.",
-    color: ["#0f766e", "#1e293b"],
+    poster: "posters/el-origen.jpg",
+    color: ["#164e63", "#22d3ee"],
   },
   {
     id: 5,
@@ -58,7 +64,8 @@ export const catalogo = [
     temporadas: 5,
     sinopsis:
       "Un profesor de química con una enfermedad grave se adentra en el mundo del narcotráfico para asegurar el futuro de su familia.",
-    color: ["#166534", "#facc15"],
+    poster: "posters/breaking-bad.jpg",
+    color: ["#1e3a8a", "#38bdf8"],
   },
   {
     id: 6,
@@ -69,7 +76,8 @@ export const catalogo = [
     duracion: "81 min",
     sinopsis:
       "Los juguetes de un niño cobran vida cuando nadie los ve, y una rivalidad entre dos de ellos desencadena una gran aventura.",
-    color: ["#0284c7", "#f59e0b"],
+    poster: "posters/toy-story.jpg",
+    color: ["#0369a1", "#7dd3fc"],
   },
   {
     id: 7,
@@ -80,7 +88,8 @@ export const catalogo = [
     duracion: "132 min",
     sinopsis:
       "Una familia sin recursos se infiltra poco a poco en la vida de una familia adinerada, con consecuencias inesperadas.",
-    color: ["#334155", "#65a30d"],
+    poster: "posters/parasitos.jpg",
+    color: ["#1e293b", "#60a5fa"],
   },
   {
     id: 8,
@@ -91,7 +100,8 @@ export const catalogo = [
     temporadas: 9,
     sinopsis:
       "Un falso documental sobre el día a día de los empleados de una oficina de ventas de papel.",
-    color: ["#1d4ed8", "#94a3b8"],
+    poster: "posters/the-office.jpg",
+    color: ["#1d4ed8", "#93c5fd"],
   },
   {
     id: 9,
@@ -102,7 +112,8 @@ export const catalogo = [
     duracion: "120 min",
     sinopsis:
       "En un desierto postapocalíptico, una guerrera y un vagabundo huyen de un tirano a bordo de un camión blindado.",
-    color: ["#c2410c", "#fbbf24"],
+    poster: "posters/mad-max-furia-en-el-camino.jpg",
+    color: ["#172554", "#3b82f6"],
   },
   {
     id: 10,
@@ -113,7 +124,8 @@ export const catalogo = [
     temporadas: 3,
     sinopsis:
       "La desaparición de un niño en un pueblo alemán revela secretos que conectan a varias generaciones a través del tiempo.",
-    color: ["#0f172a", "#ca8a04"],
+    poster: "posters/dark.jpg",
+    color: ["#0f172a", "#6366f1"],
   },
   {
     id: 11,
@@ -124,7 +136,8 @@ export const catalogo = [
     duracion: "117 min",
     sinopsis:
       "Un joven de Brooklyn descubre que no es el único con poderes de araña cuando aparecen versiones de otras dimensiones.",
-    color: ["#db2777", "#2563eb"],
+    poster: "posters/spider-man-un-nuevo-universo.jpg",
+    color: ["#3730a3", "#60a5fa"],
   },
   {
     id: 12,
@@ -135,7 +148,8 @@ export const catalogo = [
     temporadas: 8,
     sinopsis:
       "Varias familias nobles se disputan el control del trono de hierro mientras una amenaza antigua despierta en el norte.",
-    color: ["#475569", "#b91c1c"],
+    poster: "posters/juego-de-tronos.jpg",
+    color: ["#1e293b", "#3b82f6"],
   },
   {
     id: 13,
@@ -146,7 +160,8 @@ export const catalogo = [
     duracion: "118 min",
     sinopsis:
       "En la España de la posguerra, una niña descubre un mundo mágico y debe superar tres pruebas.",
-    color: ["#14532d", "#7c2d12"],
+    poster: "posters/el-laberinto-del-fauno.jpg",
+    color: ["#134e4a", "#38bdf8"],
   },
   {
     id: 14,
@@ -157,7 +172,8 @@ export const catalogo = [
     temporadas: 6,
     sinopsis:
       "Historias independientes que exploran el lado oscuro de la tecnología y su efecto en la sociedad.",
-    color: ["#111827", "#6b7280"],
+    poster: "posters/black-mirror.jpg",
+    color: ["#0f172a", "#64748b"],
   },
   {
     id: 15,
@@ -168,7 +184,8 @@ export const catalogo = [
     duracion: "155 min",
     sinopsis:
       "Un general romano traicionado se convierte en gladiador y busca vengarse del emperador que destruyó a su familia.",
-    color: ["#92400e", "#d6a05b"],
+    poster: "posters/gladiador.jpg",
+    color: ["#1e40af", "#93c5fd"],
   },
   {
     id: 16,
@@ -179,7 +196,8 @@ export const catalogo = [
     temporadas: 10,
     sinopsis:
       "Seis amigos viven juntos las alegrías y los tropiezos de la vida adulta en Nueva York.",
-    color: ["#9333ea", "#facc15"],
+    poster: "posters/friends.jpg",
+    color: ["#4338ca", "#a5b4fc"],
   },
   {
     id: 17,
@@ -190,7 +208,8 @@ export const catalogo = [
     duracion: "95 min",
     sinopsis:
       "Las emociones dentro de la mente de una niña intentan guiarla cuando su familia se muda a otra ciudad.",
-    color: ["#0ea5e9", "#f472b6"],
+    poster: "posters/intensamente.jpg",
+    color: ["#0284c7", "#bae6fd"],
   },
   {
     id: 18,
@@ -201,7 +220,8 @@ export const catalogo = [
     temporadas: 1,
     sinopsis:
       "Recrea el desastre nuclear de 1986 y los esfuerzos de quienes intentaron contener sus consecuencias.",
-    color: ["#3f6212", "#44403c"],
+    poster: "posters/chernobyl.jpg",
+    color: ["#0c4a6e", "#38bdf8"],
   },
   {
     id: 19,
@@ -212,7 +232,8 @@ export const catalogo = [
     duracion: "91 min",
     sinopsis:
       "Dos astronautas quedan a la deriva en el espacio tras un accidente y luchan por regresar a la Tierra.",
-    color: ["#1e1b4b", "#38bdf8"],
+    poster: "posters/gravedad.jpg",
+    color: ["#1e1b4b", "#60a5fa"],
   },
   {
     id: 20,
@@ -223,7 +244,8 @@ export const catalogo = [
     temporadas: 3,
     sinopsis:
       "Un joven con el poder de dominar los cuatro elementos debe detener a una nación que busca conquistar el mundo.",
-    color: ["#ea580c", "#0891b2"],
+    poster: "posters/avatar-la-leyenda-de-aang.jpg",
+    color: ["#075985", "#2dd4bf"],
   },
 ];
 

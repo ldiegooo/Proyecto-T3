@@ -1,9 +1,17 @@
+/* ========== Paleta PonyCine ==========
+   Azules: #1E3A8A (profundo), #3B82F6 (acento), #60A5FA (claro) y texto #EFF6FF.
+   Para cambiar los colores de toda la app basta editar estas variables. */
 :root {
-  --fondo: #111827;
-  --superficie: #1f2937;
-  --texto: #f3f4f6;
-  --texto-suave: #9ca3af;
-  --acento: #facc15;
+  --fondo: #0b1630;
+  --superficie: #10204f;
+  --superficie-2: #1e3a8a;
+  --borde: #27407f;
+  --texto: #eff6ff;
+  --texto-suave: #9db4d9;
+  --acento: #3b82f6;
+  --acento-2: #60a5fa;
+  --sobre-acento: #0b1630; /* texto sobre el acento claro (buen contraste) */
+  --favorito: #fb7185;
   --radio: 12px;
 }
 
@@ -13,9 +21,15 @@
 
 body {
   margin: 0;
-  background: var(--fondo);
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 420px at 85% -10%, rgba(59, 130, 246, 0.28), transparent 60%),
+    radial-gradient(700px 360px at -10% 0%, rgba(30, 58, 138, 0.55), transparent 60%),
+    var(--fondo);
+  background-attachment: fixed;
   color: var(--texto);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .app {
@@ -33,14 +47,20 @@ body {
 }
 .logo {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, var(--texto) 0%, var(--acento-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Búsqueda */
 .search {
   width: 100%;
   padding: 12px 16px;
-  border: none;
+  border: 1px solid var(--borde);
   border-radius: var(--radio);
   background: var(--superficie);
   color: var(--texto);
@@ -51,6 +71,7 @@ body {
 }
 .search:focus {
   outline: 2px solid var(--acento);
+  border-color: transparent;
 }
 
 /* Filtros */
@@ -64,25 +85,36 @@ body {
 }
 .chips {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 .chip {
-  padding: 6px 14px;
-  border: none;
+  padding: 8px 14px;
+  border: 1px solid var(--borde);
   border-radius: 999px;
   background: var(--superficie);
   color: var(--texto);
   font-size: 0.85rem;
   cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.chip:hover {
+  border-color: var(--acento);
 }
 .chip--activo {
-  background: var(--acento);
-  color: #111827;
+  background: var(--acento-2);
+  border-color: var(--acento-2);
+  color: var(--sobre-acento);
   font-weight: 600;
 }
+.selects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 .select {
-  padding: 6px 12px;
-  border: none;
+  padding: 8px 12px;
+  border: 1px solid var(--borde);
   border-radius: 8px;
   background: var(--superficie);
   color: var(--texto);
@@ -117,8 +149,8 @@ body {
   cursor: pointer;
 }
 .nav__btn--activo {
-  background: var(--acento);
-  color: #111827;
+  background: var(--acento-2);
+  color: var(--sobre-acento);
   font-weight: 600;
 }
 .seccion-titulo {
@@ -145,23 +177,28 @@ body {
   position: absolute;
   top: 8px;
   left: 8px;
-  z-index: 1;
-  width: 32px;
-  height: 32px;
+  z-index: 3; /* por encima de la imagen del póster */
+  width: 36px;
+  height: 36px;
   border: none;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(11, 22, 48, 0.7);
+  backdrop-filter: blur(4px);
   color: var(--texto);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   line-height: 1;
   cursor: pointer;
 }
 .card__fav--activo {
-  color: #f43f5e;
+  color: var(--favorito);
 }
 .card__fav:focus-visible,
-.card__abrir:focus-visible {
-  outline: 2px solid var(--acento);
+.card__abrir:focus-visible,
+.chip:focus-visible,
+.btn:focus-visible,
+.modal__fav:focus-visible,
+.modal__cerrar:focus-visible {
+  outline: 2px solid var(--acento-2);
   outline-offset: 2px;
 }
 .card__poster {
@@ -173,12 +210,29 @@ body {
   border-radius: var(--radio);
   background-size: cover;
   background-position: center;
-  transition: transform 0.15s;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s, box-shadow 0.15s;
 }
-.card:hover .card__poster {
-  transform: translateY(-4px);
+/* El efecto hover solo en dispositivos con mouse (en celular se quedaría "pegado") */
+@media (hover: hover) {
+  .card:hover .card__poster {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 26px rgba(59, 130, 246, 0.45);
+  }
+}
+.card__poster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(11, 22, 48, 0.85) 0%, rgba(11, 22, 48, 0) 55%);
+  pointer-events: none;
+}
+.card__poster > * {
+  z-index: 2;
 }
 .card__poster-titulo {
+  position: relative;
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.2;
@@ -190,7 +244,8 @@ body {
   right: 8px;
   padding: 2px 8px;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(11, 22, 48, 0.7);
+  backdrop-filter: blur(4px);
   font-size: 0.7rem;
 }
 .card__titulo {
@@ -212,7 +267,8 @@ body {
   align-items: center;
   justify-content: center;
   padding: 16px;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(4, 9, 24, 0.82);
+  backdrop-filter: blur(3px);
 }
 .modal__caja {
   position: relative;
@@ -223,6 +279,7 @@ body {
   max-height: 90vh;
   overflow-y: auto;
   padding: 20px;
+  border: 1px solid var(--borde);
   border-radius: var(--radio);
   background: var(--superficie);
 }
@@ -230,11 +287,11 @@ body {
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border: none;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.4);
+  background: var(--superficie-2);
   color: var(--texto);
   cursor: pointer;
 }
@@ -256,7 +313,7 @@ body {
 }
 .modal__titulo {
   margin: 0;
-  padding-right: 32px;
+  padding-right: 40px;
   font-size: 1.3rem;
 }
 .modal__meta {
@@ -271,33 +328,102 @@ body {
 .modal__fav {
   align-self: flex-start;
   margin-top: auto;
-  padding: 8px 16px;
-  border: none;
+  padding: 10px 18px;
+  border: 1px solid var(--borde);
   border-radius: 999px;
-  background: var(--fondo);
+  background: var(--superficie-2);
   color: var(--texto);
   font-size: 0.9rem;
   cursor: pointer;
 }
 .modal__fav--activo {
-  background: #f43f5e;
-  color: #fff;
+  background: var(--acento-2);
+  border-color: var(--acento-2);
+  color: var(--sobre-acento);
+  font-weight: 600;
 }
 
-/* Móvil: encabezado y detalle se adaptan a pantallas angostas */
-@media (max-width: 560px) {
-  .header {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .modal__caja {
-    flex-direction: column;
-  }
-  .modal__poster {
-    flex: none;
-    width: 55%;
-    align-self: center;
-  }
+/* Botones */
+.btn {
+  padding: 10px 18px;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  background: rgba(11, 22, 48, 0.55);
+  color: var(--texto);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn--primario {
+  background: var(--acento-2);
+  border-color: var(--acento-2);
+  color: var(--sobre-acento);
+  font-weight: 700;
+}
+
+/* Destacado (hero) */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 28px;
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  background:
+    radial-gradient(500px 240px at 100% 0%, rgba(59, 130, 246, 0.45), transparent 70%),
+    linear-gradient(120deg, var(--superficie-2) 0%, var(--superficie) 55%, var(--fondo) 100%);
+}
+.hero__texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 560px;
+}
+.hero__etiqueta {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(96, 165, 250, 0.18);
+  color: var(--acento-2);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hero__titulo {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  line-height: 1.1;
+}
+.hero__meta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+.hero__sinopsis {
+  margin: 0;
+  line-height: 1.5;
+}
+.hero__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+.hero__poster {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  flex: 0 0 150px;
+  aspect-ratio: 2 / 3;
+  padding: 12px;
+  overflow: hidden;
+  border-radius: var(--radio);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 
 /* Imágenes de póster */
@@ -313,10 +439,59 @@ body {
   height: 100%;
   object-fit: cover;
 }
-.chips {
-  flex-wrap: wrap;
-}
-.chip--fav.chip--activo {
-  background: #f43f5e;
-  color: #fff;
+
+/* Móvil: pantallas angostas */
+@media (max-width: 560px) {
+  .app {
+    padding: 12px;
+  }
+  .header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .grid {
+    gap: 12px;
+  }
+  .filters {
+    flex-direction: column;
+    flex-wrap: nowrap; /* con wrap, las columnas se estiran más que la pantalla */
+    align-items: stretch;
+  }
+  .selects {
+    flex-wrap: nowrap;
+  }
+  /* 16px evita que iOS haga zoom automático al tocar el selector */
+  .select {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 8px;
+    font-size: 1rem;
+  }
+  .hero {
+    padding: 20px;
+  }
+  .hero__poster {
+    display: none;
+  }
+  .hero__acciones .btn {
+    flex: 1;
+  }
+  .modal {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .modal__caja {
+    flex-direction: column;
+    max-height: 92vh;
+    border-radius: var(--radio) var(--radio) 0 0;
+  }
+  .modal__poster {
+    flex: none;
+    width: 55%;
+    align-self: center;
+  }
+  .modal__fav {
+    align-self: stretch;
+    text-align: center;
+  }
 }
